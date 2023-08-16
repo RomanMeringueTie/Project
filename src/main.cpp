@@ -14,21 +14,20 @@ int menu(sf::RenderWindow &window)
     // sound.setBuffer(buffer);
     // sound.setVolume(10);
     // sound.play();
-    sf::Texture t;
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile("audio/switch.wav"))
         return -1;
-    sf::Sound sound;
-    sound.setBuffer(buffer);
-    sound.setVolume(5);
-    t.loadFromFile("pictures/background.jpg");
-    sf::Sprite s(t);
-    window.draw(s);
-    sf::Texture h;
-    h.loadFromFile("pictures/player.png");
-    sf::Sprite n(h);
-    n.setPosition(0, 0);
-    window.draw(n);
+    sf::Sound switch_s;
+    switch_s.setBuffer(buffer);
+    switch_s.setVolume(10);
+    sf::Texture background_t;
+    background_t.loadFromFile("pictures/background.jpg");
+    sf::Sprite background_s(background_t);
+    window.draw(background_s);
+    sf::Texture player_t;
+    player_t.loadFromFile("pictures/player.png");
+    sf::Sprite player_s(player_t);
+    window.draw(player_s);
     sf::Font font;
     if (!font.loadFromFile("fonts/porter-sans-inline-block.otf"))
     {
@@ -56,7 +55,7 @@ int menu(sf::RenderWindow &window)
         window.display();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
-            sound.play();
+            switch_s.play();
             window.clear();
             sf::Texture t;
             t.loadFromFile("pictures/background.jpg");
@@ -77,7 +76,7 @@ int menu(sf::RenderWindow &window)
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         {
-            sound.play();
+            switch_s.play();
             window.clear();
             sf::Texture t;
             t.loadFromFile("pictures/background.jpg");
@@ -115,31 +114,72 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(16, 9), "Game", sf::Style::Fullscreen);
     menu(window);
-    sf::CircleShape shape(30);
-    shape.setFillColor(sf::Color::Red);
+    sf::Texture sibir_t;
+    sibir_t.loadFromFile("pictures/sibir.png");
+    sf::Sprite sibir_s(sibir_t);
+    float stick_x = sibir_s.getPosition().x + 5;
+    float stick_y = sibir_s.getPosition().y;
+    sf::Texture stick_t;
+    stick_t.loadFromFile("pictures/stick.png");
+    sf::Sprite stick_s(stick_t);
+    stick_s.setPosition(stick_x, stick_y);
     while (window.isOpen())
     {
-        sf::Texture t;
-        t.loadFromFile("pictures/rink.png");
-        sf::Sprite s(t);
-        s.setPosition(0, 0);
-        window.draw(s);
+        sf::Texture rink_t;
+        rink_t.loadFromFile("pictures/rink.png");
+        sf::Sprite rink_s(rink_t);
+        rink_s.setPosition(0, 0);
+        window.draw(rink_s);
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::MouseButtonPressed)
                 window.close();
         }
-        window.draw(shape);
+        window.draw(sibir_s);
+        window.draw(stick_s);
         window.display();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            shape.move(-1, 0);
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            shape.move(1, 0);
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            shape.move(0, -1);
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            shape.move(0, 1);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            sibir_s.move(-4, 0);
+            stick_s.move(-4, 0);
+            stick_s.scale(-1, 1);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {
+            sibir_s.move(4, 0);
+            stick_s.move(4, 0);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            sibir_s.move(0, -4);
+            stick_s.move(0, -4);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            sibir_s.move(0, 4);
+            stick_s.move(0, 4);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            sibir_s.move(3, 3);
+            stick_s.move(3, 3);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            sibir_s.move(-3, 3);
+            stick_s.move(-3, 3);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            sibir_s.move(3, -3);
+            stick_s.move(3, -3);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            sibir_s.move(-3, -3);
+            stick_s.move(-3, -3);
+        }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
             window.clear();
