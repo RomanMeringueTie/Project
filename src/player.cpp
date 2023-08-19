@@ -1,9 +1,4 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/Audio.hpp>
-#define HEIGHT 1080
-#define WIDTH 1920
 #include "player.hpp"
 
 Body::Body() : x(0), y(0)

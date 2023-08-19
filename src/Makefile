@@ -1,7 +1,7 @@
 all: app
 
 app: game.cpp player.cpp
-	g++ -Wall -o app game.cpp player.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+	g++ -Wall -o app game.cpp player.cpp background.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 .PHONY: run
 

@@ -5,6 +5,7 @@
 #define HEIGHT 1080
 #define WIDTH 1920
 #include "player.hpp"
+#include "background.hpp"
 
 int menu(sf::RenderWindow &window)
 {
@@ -117,13 +118,10 @@ int main()
     menu(window);
     Body body;
     Stick stick;
+    Rink rink;
     while (window.isOpen())
     {
-        sf::Texture rink_t;
-        rink_t.loadFromFile("pictures/rink.png");
-        sf::Sprite rink_s(rink_t);
-        rink_s.setPosition(0, 0);
-        window.draw(rink_s);
+        rink.draw(window);
         sf::Event event;
         while (window.pollEvent(event))
         {

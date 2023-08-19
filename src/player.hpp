@@ -1,4 +1,4 @@
-#include <iostream>
+#pragma once
 #include <SFML/Graphics.hpp>
 
 // class Player
