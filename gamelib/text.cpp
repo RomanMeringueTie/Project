@@ -1,8 +1,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include "text.hpp"
+#include <text.hpp>
 
+/////////////////////////Button/////////////////////////
 Button::Button() : text(new sf::Text), font(new sf::Font) {}
 
 Button::~Button()
@@ -31,10 +32,12 @@ bool Button::is_on()
     else
         return false;
 }
+/////////////////////////Button/////////////////////////
 
+/////////////////////////Play/////////////////////////
 Play::Play()
 {
-    font->loadFromFile("fonts/porter-sans-inline-block.otf");
+    font->loadFromFile("/home/roma/Project/src/fonts/porter-sans-inline-block.otf");
     text->setFont(*font);
     text->setString("PLAY");
     sf::FloatRect bounds = text->getLocalBounds();
@@ -45,10 +48,12 @@ Play::Play()
 }
 
 Play::~Play() {}
+/////////////////////////Button/////////////////////////
 
+/////////////////////////Exit/////////////////////////
 Exit::Exit()
 {
-    font->loadFromFile("fonts/porter-sans-inline-block.otf");
+    font->loadFromFile("/home/roma/Project/src/fonts/porter-sans-inline-block.otf");
     text->setFont(*font);
     text->setString("EXIT");
     sf::FloatRect bounds = text->getLocalBounds();
@@ -58,3 +63,4 @@ Exit::Exit()
     text->setStyle(sf::Text::Bold);
 }
 Exit::~Exit() {}
+/////////////////////////Exit/////////////////////////

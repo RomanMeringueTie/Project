@@ -1,5 +1,6 @@
-#include "player.hpp"
+#include <player.hpp>
 
+/////////////////////////Body/////////////////////////
 Body::Body() : x(0), y(0)
 {
 }
@@ -18,7 +19,7 @@ void Body::draw(sf::RenderWindow &window)
 {
     sf::Sprite sibir_r;
     sf::Texture sibir_t;
-    sibir_t.loadFromFile("pictures/sibir.png");
+    sibir_t.loadFromFile("/home/roma/Project/src/pictures/sibir.png");
     sibir_r.setTexture(sibir_t);
     sibir_r.setPosition(x, y);
     window.draw(sibir_r);
@@ -62,7 +63,9 @@ void Body::move()
         y -= 3;
     }
 }
+/////////////////////////Body/////////////////////////
 
+/////////////////////////Stick/////////////////////////
 Stick::Stick()
 {
     x = x + 5;
@@ -83,8 +86,9 @@ void Stick::draw(sf::RenderWindow &window)
 {
     sf::Texture stick_t;
     sf::Sprite stick_r;
-    stick_t.loadFromFile("pictures/stick.png");
+    stick_t.loadFromFile("/home/roma/Project/src/pictures/stick.png");
     stick_r.setTexture(stick_t);
     stick_r.setPosition(x, y);
     window.draw(stick_r);
 }
+/////////////////////////Stick/////////////////////////

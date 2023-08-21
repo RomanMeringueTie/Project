@@ -1,8 +1,8 @@
 #define HEIGHT 1080
 #define WIDTH 1920
-#include "player.hpp"
-#include "background.hpp"
-#include "text.hpp"
+#include <player.hpp>
+#include <background.hpp>
+#include <text.hpp>
 
 int menu(sf::RenderWindow &window)
 {
