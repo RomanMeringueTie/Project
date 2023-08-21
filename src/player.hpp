@@ -1,14 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-// class Player
-// {
-// public:
-//     virtual float get_x() = 0;
-//     virtual float get_y() = 0;
-//     virtual void draw(sf::RenderWindow &window) = 0;
-// };
-
+/////////////////////////Body/////////////////////////
 class Body
 {
 protected:
@@ -23,7 +16,9 @@ public:
     void draw(sf::RenderWindow &window);
     void move();
 };
+/////////////////////////Body/////////////////////////
 
+/////////////////////////Stick/////////////////////////
 class Stick : public Body
 {
 
@@ -34,3 +29,4 @@ public:
     float get_y();
     void draw(sf::RenderWindow &window);
 };
+/////////////////////////Stick/////////////////////////

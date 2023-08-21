@@ -1,4 +1,3 @@
-#include <SFML/Graphics.hpp>
 #include "player.hpp"
 
 Body::Body() : x(0), y(0)

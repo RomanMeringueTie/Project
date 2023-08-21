@@ -7,18 +7,18 @@
 
 int menu(sf::RenderWindow &window)
 {
-    // sf::SoundBuffer buffer;
-    // if (!buffer.loadFromFile("music.wav"))
-    //     return -1;
-    // sf::Sound sound;
-    // sound.setBuffer(buffer);
-    // sound.setVolume(10);
-    // sound.play();
     sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile("audio/switch.wav"))
+    if (!buffer.loadFromFile("audio/music.wav"))
+        return -1;
+    sf::Sound sound;
+    sound.setBuffer(buffer);
+    sound.setVolume(10);
+    sound.play();
+    sf::SoundBuffer buffer_1;
+    if (!buffer_1.loadFromFile("audio/switch.wav"))
         return -1;
     sf::Sound switch_s;
-    switch_s.setBuffer(buffer);
+    switch_s.setBuffer(buffer_1);
     switch_s.setVolume(10);
     sf::Texture background_t;
     background_t.loadFromFile("pictures/background.jpg");
